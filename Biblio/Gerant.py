@@ -1,4 +1,5 @@
 from .data import *
+import pandas as pd
 class gerant:
     def __init__(self, name,surname):
         self.name = name
@@ -27,3 +28,12 @@ class gerant:
             books[book_erase]-=1
         else:
             print("ce livre n'exite pas dans la base")
+
+    def Create_dataframe(self):
+        df = pd.DataFrame(books)
+        print(df.describe())
+
+        return df
+    def Register_csv(self):
+        self.Create_dataframe().to_csv("books.csv", index=True)
+        return "fichier créé"

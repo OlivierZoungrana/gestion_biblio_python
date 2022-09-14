@@ -2,6 +2,6 @@
 listeLivre = ["zola", "miles"]
 
 books = {
-    "zola": 2,
-    "miles": 3
+    "zola": [1],
+    "miles": [2]
 }
