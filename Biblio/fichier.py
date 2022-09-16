@@ -1,19 +1,12 @@
-# coding: utf-8
+import http.server
 
-from bs4 import BeautifulSoup
+PORT = 8888
+server_address = ("", PORT)
 
-html_doc = """
-<html>
-    <head>
-    <title>Titre de votre site</title>
-    </head>
-    <body>
-        <p>Texte à lire 1</p>
-        <p>Texte à lire 2</p>
-    </body>
-</html>
-"""
-soup = BeautifulSoup(html_doc)
+server = http.server.HTTPServer
+handler = http.server.CGIHTTPRequestHandler
+handler.cgi_directories = ["/"]
+print("Serveur actif sur le port :", PORT)
 
-for p in soup.find_all('p'):
-    print (p)
+httpd = server(server_address, handler)
+httpd.serve_forever()
